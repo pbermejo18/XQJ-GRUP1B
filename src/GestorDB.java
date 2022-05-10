@@ -51,4 +51,19 @@ public class GestorDB {
                 if (xmlStreamReader.getEventType() == XMLStreamConstants.CHARACTERS) System.out.println(xmlStreamReader.getText());
         }
     }
+    public void getNAccidentsBarri(String barri) throws XQException, XMLStreamException {
+        XQExpression expr = conn.createExpression();
+
+        XQResultSequence resultBarri = expr.executeQuery(
+                " for $c in collection(\"/db/GRUP1B\")" +
+                        "let $naccidents:= count($c/Accidentalitat2015/Registre[Nomdistricte='"+barri+"'])" +
+                        "return" +
+                        "<i>{$naccidents}</i>");
+
+        while (resultBarri.next()) {
+            XMLStreamReader xmlStreamReader = resultBarri.getItemAsStream();
+            for (; xmlStreamReader.hasNext(); xmlStreamReader.next())
+                if (xmlStreamReader.getEventType() == XMLStreamConstants.CHARACTERS) System.out.println(xmlStreamReader.getText());
+        }
+    }
 }
