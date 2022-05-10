@@ -51,6 +51,7 @@ public class GestorDB {
                 if (xmlStreamReader.getEventType() == XMLStreamConstants.CHARACTERS) System.out.println(xmlStreamReader.getText());
         }
     }
+
     public void getNAccidentsBarri(String barri) throws XQException, XMLStreamException {
         XQExpression expr = conn.createExpression();
 
@@ -63,7 +64,7 @@ public class GestorDB {
         while (resultBarri.next()) {
             XMLStreamReader xmlStreamReader = resultBarri.getItemAsStream();
             for (; xmlStreamReader.hasNext(); xmlStreamReader.next())
-                if (xmlStreamReader.getEventType() == XMLStreamConstants.CHARACTERS) System.out.println(xmlStreamReader.getText());
+                if (xmlStreamReader.getEventType() == XMLStreamConstants.CHARACTERS) System.out.println("Han hagut: "+xmlStreamReader.getText()+" accidents");
         }
     }
 }

@@ -10,7 +10,7 @@ public class Main {
         System.out.println("*** Barris que tenen com a mínim un registre ***");
         gestorDB.getBarris();
 
-        System.out.println("\n*** Numero de accidents en un barri");
+        System.out.println("\n*** Nombre d'accidents a un barri ***");
         System.out.print("Escriu el barri que vols consultar quants accidents han hagut durant 2015: ");
         String barri = scanner.nextLine();
         gestorDB.getNAccidentsBarri(barri);
