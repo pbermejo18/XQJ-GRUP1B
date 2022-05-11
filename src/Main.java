@@ -21,6 +21,12 @@ public class Main {
         System.out.println("\n*** Accidents en horari nocturn (22h a 06h) durant tot l'any ***");
         gestorDB.getAccidentsEnUnHorari();
 
+        System.out.println("\n*** Total de vehicles implicats en accidents durant tot l'any ***");
+        gestorDB.getVehiclesImplicats();
+
+        System.out.println("\n*** Tipus de lesions provocades per els accidents ***");
+        gestorDB.getTipusLesionats();
+
         gestorDB.tancarSessió();
     }
 }

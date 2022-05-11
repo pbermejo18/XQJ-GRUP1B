@@ -122,12 +122,43 @@ public class GestorDB {
     }
 
     // total de vehicles implicats en els accidents
-    public void getVehiclesImplicats() {
+    public void getVehiclesImplicats() throws XQException, XMLStreamException {
+        XQExpression expr = conn.createExpression();
 
+        XQResultSequence resultVehicle = expr.executeQuery(
+                """
+                        for $c in collection('/db/GRUP1B')
+                           let $nvehicles:= sum($c/Accidentalitat2015/Registre/Numerodevehiclesimplicats)
+                           return
+                               <i>{$nvehicles}</i>
+                        """
+        );
+
+        while (resultVehicle.next()) {
+            XMLStreamReader xmlStreamReader = resultVehicle.getItemAsStream();
+            for (; xmlStreamReader.hasNext(); xmlStreamReader.next())
+                if (xmlStreamReader.getEventType() == XMLStreamConstants.CHARACTERS) System.out.println("Total vehicles implicats: "+xmlStreamReader.getText()+" vehicles");
+        }
     }
 
     // Numerodelesionatslleus y Numerodelesionatsgreus en tot l'any
-    public void  getTipusLesionats() {
+    public void  getTipusLesionats() throws XQException, XMLStreamException {
+        XQExpression expr = conn.createExpression();
 
+        XQResultSequence resultTipusLesio = expr.executeQuery(
+                """
+                        for $c in collection('/db/GRUP1B')
+                           let $nlesiolleu:= sum($c/Accidentalitat2015/Registre/Numerodelesionatslleus)
+                           let $nlesiogreu:= sum($c/Accidentalitat2015/Registre/Numerodelesionatsgreus)
+                           return
+                               <i>{"Han hagut: ",$nlesiolleu," lesionats lleus y ",$nlesiogreu," lesionats greus"}</i>
+                        """
+        );
+
+        while (resultTipusLesio.next()) {
+            XMLStreamReader xmlStreamReader = resultTipusLesio.getItemAsStream();
+            for (; xmlStreamReader.hasNext(); xmlStreamReader.next())
+                if (xmlStreamReader.getEventType() == XMLStreamConstants.CHARACTERS) System.out.println(xmlStreamReader.getText());
+        }
     }
 }

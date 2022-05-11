@@ -1,6 +1,6 @@
 # XQJ-GRUP1B
-Pol: getBarris(), getNAccidentsBarri(String barri)
+Pol: getmesAmbMesAccidents(), getNAccidentsBarri(String barri)
 
-Samuel:
+Samuel: getVehiclesImplicats(), getAccidentsEnUnHorari()
 
-Iván:
+Iván: getBarris(), getTipusLesionats()
