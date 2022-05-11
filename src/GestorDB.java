@@ -92,7 +92,15 @@ public class GestorDB {
     // mostra el accidents que han hagut entre Horadedia 23 y Horadedia 06
     public void getAccidentsEnUnHorari() throws XQException, XMLStreamException {
         XQExpression expr = conn.createExpression();
-        // collection('/db/GRUP1B')//*[contains(text(),"12") and contains(name(),"Horadedia")]
+        /*
+        collection('/db/GRUP1B')//*[contains(text(),"12") and contains(name(),"Horadedia")]
+
+        for $c in collection('/db/GRUP1B')//*[contains(text(),"12") and contains(name(),"Horadedia")]
+            let $naccidents:= count($c)
+            return
+                <i>{$naccidents}</i>
+         */
+
         XQResultSequence resultMes = expr.executeQuery(
                 """
                         let $names := for $name in //Accidentalitat2015/Registre/Nommes/text()
