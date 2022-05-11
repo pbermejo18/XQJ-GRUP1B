@@ -15,10 +15,11 @@ public class Main {
         String barri = scanner.nextLine();
         gestorDB.getNAccidentsBarri(barri);
 
-        System.out.println("\n*** Llista d'accidents a cada més ***");
+        System.out.println("\n*** Llista d'accidents a cada mes (de més accidents a menys) ***");
         gestorDB.getmesAmbMesAccidents();
 
-
+        System.out.println("\n*** Accidents en horari nocturn (22h a 06h) durant tot l'any ***");
+        gestorDB.getAccidentsEnUnHorari();
 
         gestorDB.tancarSessió();
     }
