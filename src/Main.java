@@ -15,6 +15,8 @@ public class Main {
         String barri = scanner.nextLine();
         gestorDB.getNAccidentsBarri(barri);
 
+        System.out.println("\n*** Llista d'accidents a cada més ***");
+        gestorDB.getmesAmbMesAccidents();
         gestorDB.tancarSessió();
     }
 }
