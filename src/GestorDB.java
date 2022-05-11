@@ -88,4 +88,25 @@ public class GestorDB {
                 if (xmlStreamReader.getEventType() == XMLStreamConstants.CHARACTERS) System.out.println(xmlStreamReader.getText());
         }
     }
+
+    // mostra el accidents que han hagut entre Horadedia 23 y Horadedia 06
+    public void getAccidentsEnUnHorari() throws XQException, XMLStreamException {
+        XQExpression expr = conn.createExpression();
+        // collection('/db/GRUP1B')//*[contains(text(),"12") and contains(name(),"Horadedia")]
+        XQResultSequence resultMes = expr.executeQuery(
+                """
+                        let $names := for $name in //Accidentalitat2015/Registre/Nommes/text()
+                        return ($name)
+                        for $name in distinct-values($names)
+                        order by count($names[. eq $name]) descending
+                        return <N>{$name, '-', count($names[. eq $name])}</N>
+                        """
+        );
+
+        while (resultMes.next()) {
+            XMLStreamReader xmlStreamReader = resultMes.getItemAsStream();
+            for (; xmlStreamReader.hasNext(); xmlStreamReader.next())
+                if (xmlStreamReader.getEventType() == XMLStreamConstants.CHARACTERS) System.out.println(xmlStreamReader.getText());
+        }
+    }
 }

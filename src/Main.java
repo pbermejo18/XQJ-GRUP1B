@@ -17,6 +17,9 @@ public class Main {
 
         System.out.println("\n*** Llista d'accidents a cada més ***");
         gestorDB.getmesAmbMesAccidents();
+
+
+
         gestorDB.tancarSessió();
     }
 }
