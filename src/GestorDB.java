@@ -83,9 +83,7 @@ public class GestorDB {
         );
 
         while (resultMes.next()) {
-            //resultNom.writeSequence(System.out, null);
             XMLStreamReader xmlStreamReader = resultMes.getItemAsStream();
-            //System.out.println(xmlStreamReader.getElementText());
             for (; xmlStreamReader.hasNext(); xmlStreamReader.next())
                 if (xmlStreamReader.getEventType() == XMLStreamConstants.CHARACTERS) System.out.println(xmlStreamReader.getText());
         }
