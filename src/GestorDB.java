@@ -161,4 +161,35 @@ public class GestorDB {
                 if (xmlStreamReader.getEventType() == XMLStreamConstants.CHARACTERS) System.out.println(xmlStreamReader.getText());
         }
     }
+
+    public void insertRegistre(Registre registre) throws XQException {
+        XQExpression expr = conn.createExpression();
+        try {
+
+            String insert = "update insert \n" +
+                    "<Registre><Numerodexpedient>"+registre.getNumero_expedient()+"</Numerodexpedient><Codidistricte>"+registre.getCodi_districte()+"</Codidistricte>" +
+                    "<Nomdistricte>"+registre.getNom_districte()+"</Nomdistricte><NKbarri>"+registre.getNk_barri()+"</NKbarri><Nombarri>"+registre.getNom_barri()+"</Nombarri>" +
+                    "<Codicarrer>"+registre.getCodi_carrer()+"</Codicarrer><Nomcarrer>"+registre.getNom_carrer()+"</Nomcarrer><Numpostalcaption>"+registre.getNum_postal_caption()+"</Numpostalcaption>" +
+                    "<Descripciodiasetmana>"+registre.getDescripcio_dia_setmana()+"</Descripciodiasetmana><Diadesetmana>"+registre.getDia_setmana()+"</Diadesetmana><Descripciotipusdia>"+registre.getDescripcio_tipus_dia()+"</Descripciotipusdia>" +
+                    "<NKAny>"+registre.getnKAny()+"</NKAny><Mesdeany>"+registre.getMes_de_any()+"</Mesdeany><Nommes>"+registre.getNom_mes()+"</Nommes>" +
+                    "<Diademes>"+registre.getDia_de_mes()+"</Diademes><Horadedia>"+registre.getHora_de_dia()+"</Horadedia><Descripciotorn>"+registre.getDescripcio_torn()+"</Descripciotorn>" +
+                    "<Descripciocausavianant>"+registre.getDescripcio_causa_vianant()+"</Descripciocausavianant><Numerodevictimes>"+registre.getNum_victimas()+"</Numerodevictimes>" +
+                    "<Numerodelesionatslleus>"+registre.getNum_lesionats_lleus()+"</Numerodelesionatslleus><Numerodelesionatsgreus>"+registre.getNum_lesionats_greus()+"</Numerodelesionatsgreus>" +
+                    "<Numerodevehiclesimplicats>"+registre.getNum_vehicles()+"</Numerodevehiclesimplicats><CoordenadaUTMY>"+registre.getCoordenadaUTMY()+"</CoordenadaUTMY><CoordenadaUTMX>"+registre.getCoordenadaUTMX()+"</CoordenadaUTMX></Registre> \n" +
+                    "preceding doc('/db/GRUP1B/accidents_bcn.xml')/Accidentalitat2015/Registre[1]";
+
+            expr.executeCommand(insert);
+            System.out.println("Registre insertat");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void deleteRegistre(Long numerodexpedient) {
+
+    }
+
+    public void refactorRegistre(Long numerodexpedient) {
+
+    }
 }

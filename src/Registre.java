@@ -1,5 +1,5 @@
 public class Registre {
-    Long numero_expedient;
+    int numero_expedient;
     int codi_districte;
     String nom_districte;
     int nk_barri;
@@ -24,7 +24,7 @@ public class Registre {
     float coordenadaUTMY;
     float coordenadaUTMX;
 
-    public Registre(Long numero_expedient, int codi_districte, String nom_districte, int nk_barri, String nom_barri, int codi_carrer, String nom_carrer, String num_postal_caption, String descripcio_dia_setmana, String dia_setmana, String descripcio_tipus_dia, int nKAny, int mes_de_any, String nom_mes, int dia_de_mes, int hora_de_dia, String descripcio_torn, String descripcio_causa_vianant, int num_victimas, int num_lesionats_lleus, int num_lesionats_greus, int num_vehicles, float coordenadaUTMY, float coordenadaUTMX) {
+    public Registre(int numero_expedient, int codi_districte, String nom_districte, int nk_barri, String nom_barri, int codi_carrer, String nom_carrer, String num_postal_caption, String descripcio_dia_setmana, String dia_setmana, String descripcio_tipus_dia, int nKAny, int mes_de_any, String nom_mes, int dia_de_mes, int hora_de_dia, String descripcio_torn, String descripcio_causa_vianant, int num_victimas, int num_lesionats_lleus, int num_lesionats_greus, int num_vehicles, float coordenadaUTMY, float coordenadaUTMX) {
         this.numero_expedient = numero_expedient;
         this.codi_districte = codi_districte;
         this.nom_districte = nom_districte;
@@ -51,11 +51,11 @@ public class Registre {
         this.coordenadaUTMX = coordenadaUTMX;
     }
 
-    public Long getNumero_expedient() {
+    public int getNumero_expedient() {
         return numero_expedient;
     }
 
-    public void setNumero_expedient(Long numero_expedient) {
+    public void setNumero_expedient(int numero_expedient) {
         this.numero_expedient = numero_expedient;
     }
 
