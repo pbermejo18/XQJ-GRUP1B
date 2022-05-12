@@ -185,8 +185,17 @@ public class GestorDB {
         }
     }
 
-    public void deleteRegistre(Long numerodexpedient) {
+    public void deleteRegistre(int numerodexpedient) throws XQException {
+        XQExpression expr = conn.createExpression();
+        try {
+            String delete = "update delete \n" +
+                    "doc('/db/GRUP1B/accidents_bcn.xml')/Accidentalitat2015/Registre[Numerodexpedient='"+numerodexpedient+"']";
 
+            expr.executeCommand(delete);
+            System.out.println("Registre eliminat");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void refactorRegistre(Long numerodexpedient) {

@@ -26,7 +26,7 @@ public class Main {
 
         System.out.println("\n*** Tipus de lesions provocades per els accidents ***");
         gestorDB.getTipusLesionats();
-*/
+
         // INSERT
         System.out.print("Número d'expedient: ");
         int numero_expedient = scanner.nextInt();
@@ -110,6 +110,9 @@ public class Main {
                 descripcio_torn,descripcio_causa_vianant,num_victimas,num_lesionats_lleus,num_lesionats_greus,num_vehicles,coordenadaUTMY,coordenadaUTMX);
 
         gestorDB.insertRegistre(registre);
+*/
+        // DELETE
+        gestorDB.deleteRegistre(1);
 
         gestorDB.tancarSessió();
     }
