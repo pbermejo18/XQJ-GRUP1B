@@ -28,41 +28,81 @@ public class Main {
         gestorDB.getTipusLesionats();
 */
         // INSERT
-        System.out.println("Número d'expedient: ");
+        System.out.print("Número d'expedient: ");
         int numero_expedient = scanner.nextInt();
 
-        System.out.println("Codi districte: ");
+        System.out.print("Codi districte: ");
         int codi_districte = scanner.nextInt();
+        scanner.nextLine();
 
-        System.out.println("Nom districte: ");
-        String nom_districte = scanner.next();
+        System.out.print("Nom districte: ");
+        String nom_districte = scanner.nextLine();
 
-        System.out.println("Nk barri: ");
+        System.out.print("Nk barri: ");
         int nk_barri = scanner.nextInt();
+        scanner.nextLine();
 
-        System.out.println("Nom barri: ");
-        String nom_barri = scanner.next();
+        System.out.print("Nom barri: ");
+        String nom_barri = scanner.nextLine();
 
-        System.out.println("Codi carrer: ");
+        System.out.print("Codi carrer: ");
         int codi_carrer = scanner.nextInt();
+        scanner.nextLine();
 
+        System.out.print("Nom carrer: ");
         String nom_carrer = scanner.nextLine();
+
+        System.out.print("Número postal: ");
         String num_postal_caption = scanner.nextLine();
+
+        System.out.print("Dia de la setmana (text): ");
         String descripcio_dia_setmana = scanner.nextLine();
+
+        System.out.print("Dia de la setmana (número): ");
         String dia_setmana = scanner.nextLine();
+
+        System.out.print("Descripcio tipus de día: ");
         String descripcio_tipus_dia = scanner.nextLine();
+
+        System.out.print("Nk any: ");
         int nKAny = scanner.nextInt();
+
+        System.out.print("Mes de l'any: ");
         int mes_de_any = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("Nom del mes: ");
         String nom_mes = scanner.nextLine();
+
+        System.out.print("Día del mes: ");
         int dia_de_mes = scanner.nextInt();
+
+        System.out.print("Hora del día: ");
         int hora_de_dia = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("Descripció torn: ");
         String descripcio_torn = scanner.nextLine();
+
+        System.out.print("Descripció causa vianant: ");
         String descripcio_causa_vianant = scanner.nextLine();
+
+        System.out.print("Número de víctimes: ");
         int num_victimas = scanner.nextInt();
+
+        System.out.print("Número de lesionats lleus: ");
         int num_lesionats_lleus = scanner.nextInt();
+
+        System.out.print("Número de lesionats greus: ");
         int num_lesionats_greus = scanner.nextInt();
+
+        System.out.print("Número de vehicles: ");
         int num_vehicles = scanner.nextInt();
+
+        System.out.print("Coordenades UTMY: ");
         float coordenadaUTMY = scanner.nextFloat();
+
+        System.out.print("Coordenades UTMX: ");
         float coordenadaUTMX = scanner.nextFloat();
 
         Registre registre = new Registre(numero_expedient, codi_districte, nom_districte, nk_barri, nom_barri, codi_carrer, nom_carrer,
