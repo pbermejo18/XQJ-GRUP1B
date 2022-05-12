@@ -1,33 +1,105 @@
 import javax.xml.stream.XMLStreamException;
 import javax.xml.xquery.XQException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws XQException, XMLStreamException {
+    public static void main(String[] args) throws XQException {
         Scanner scanner = new Scanner(System.in);
         GestorDB gestorDB = new GestorDB();
-/*
-        System.out.println("*** Barris que tenen com a mínim un registre ***");
-        gestorDB.getBarris();
+        boolean salir = false;
+        int opcion;
 
+        while (!salir) {
+            System.out.println();
+            System.out.println("###################################################################");
+            System.out.println("##                            MENÚ                               ##");
+            System.out.println("## 1. Barris que tenen com a mínim un registre                   ##");
+            System.out.println("## 2. Nombre d'accidents a un barri                              ##");
+            System.out.println("## 3. Llista d'accidents a cada mes (de més accidents a menys)   ##");
+            System.out.println("## 4. Accidents en horari nocturn (22h a 06h) durant tot l'any   ##");
+            System.out.println("## 5. Total de vehicles implicats en accidents durant tot l'any  ##");
+            System.out.println("## 6. Tipus de lesions provocades per els accidents              ##");
+            System.out.println("## 7. Insert registre                                            ##");
+            System.out.println("## 8. Delete registre                                            ##");
+            System.out.println("## 9. Replace registre                                           ##");
+            System.out.println("## 10. Salir                                                     ##");
+            System.out.println("###################################################################");
+
+            try {
+                System.out.print("Escriu una de les opcions: ");
+                opcion = scanner.nextInt();
+
+                switch (opcion) {
+                    case 1:
+                        System.out.println("\n*** Barris que tenen com a mínim un registre ***");
+                        gestorDB.getBarris();
+                        break;
+                    case 2:
+                        numeroAccidents();
+                        break;
+                    case 3:
+                        System.out.println("\n*** Llista d'accidents a cada mes (de més accidents a menys) ***");
+                        gestorDB.getmesAmbMesAccidents();
+                        break;
+                    case 4:
+                        System.out.println("\n*** Accidents en horari nocturn (22h a 06h) durant tot l'any ***");
+                        gestorDB.getAccidentsEnUnHorari();
+                        break;
+                    case 5:
+                        System.out.println("\n*** Total de vehicles implicats en accidents durant tot l'any ***");
+                        gestorDB.getVehiclesImplicats();
+                        break;
+                    case 6:
+                        System.out.println("\n*** Tipus de lesions provocades per els accidents ***");
+                        gestorDB.getTipusLesionats();
+                        break;
+                    case 7:
+                        insertRegistre();
+                        break;
+                    case 8:
+                        deleteregistre();
+                        break;
+                    case 9:
+                        break;
+                    case 10:
+                        salir = true;
+                        gestorDB.tancarSessió();
+                        break;
+                    default:
+                        System.out.println("Solo números entre 1 y 4");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Debes insertar un número");
+                scanner.next();
+            } catch (XMLStreamException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    public static void numeroAccidents() throws XQException, XMLStreamException {
+        Scanner scanner = new Scanner(System.in);
+        GestorDB gestorDB = new GestorDB();
         System.out.println("\n*** Nombre d'accidents a un barri ***");
         System.out.print("Escriu el barri que vols consultar quants accidents han hagut durant 2015: ");
         String barri = scanner.nextLine();
         gestorDB.getNAccidentsBarri(barri);
+        gestorDB.tancarSessió();
+    }
 
-        System.out.println("\n*** Llista d'accidents a cada mes (de més accidents a menys) ***");
-        gestorDB.getmesAmbMesAccidents();
+    public static void deleteregistre() throws XQException {
+        Scanner scanner = new Scanner(System.in);
+        GestorDB gestorDB = new GestorDB();
+        System.out.print("Indica el número d'expedient del registre que vols esborrar: ");
+        int num = scanner.nextInt();
+        gestorDB.deleteRegistre(num);
+        gestorDB.tancarSessió();
+    }
 
-        System.out.println("\n*** Accidents en horari nocturn (22h a 06h) durant tot l'any ***");
-        gestorDB.getAccidentsEnUnHorari();
+    public static void insertRegistre() throws XQException {
+        Scanner scanner = new Scanner(System.in);
+        GestorDB gestorDB = new GestorDB();
 
-        System.out.println("\n*** Total de vehicles implicats en accidents durant tot l'any ***");
-        gestorDB.getVehiclesImplicats();
-
-        System.out.println("\n*** Tipus de lesions provocades per els accidents ***");
-        gestorDB.getTipusLesionats();
-
-        // INSERT
         System.out.print("Número d'expedient: ");
         int numero_expedient = scanner.nextInt();
 
@@ -110,10 +182,6 @@ public class Main {
                 descripcio_torn,descripcio_causa_vianant,num_victimas,num_lesionats_lleus,num_lesionats_greus,num_vehicles,coordenadaUTMY,coordenadaUTMX);
 
         gestorDB.insertRegistre(registre);
-*/
-        // DELETE
-        gestorDB.deleteRegistre(1);
-
         gestorDB.tancarSessió();
     }
 }

@@ -198,7 +198,7 @@ public class GestorDB {
         }
     }
 
-    public void refactorRegistre(Long numerodexpedient) {
+    public void refactorRegistre(int numerodexpedient) {
 
     }
 }
