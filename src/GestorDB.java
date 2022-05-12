@@ -10,7 +10,7 @@ public class GestorDB {
 
     public GestorDB() throws XQException {
         XQDataSource xqs = new ExistXQDataSource();
-        xqs.setProperty("serverName", "192.168.0.22");
+        xqs.setProperty("serverName", "192.168.249.137");
         xqs.setProperty("port", "8080");
         conn = xqs.getConnection();
     }
@@ -198,7 +198,17 @@ public class GestorDB {
         }
     }
 
-    public void refactorRegistre(int numerodexpedient) {
+    public void refactorRegistre(int numerodexpedient, String newnom) throws XQException {
+        XQExpression expr = conn.createExpression();
+        try {
+            String replace_emp = "update value \n" +
+                    "doc('/db/GRUP1B/accidents_bcn.xml')/Accidentalitat2015/Registre[Numerodexpedient='"+numerodexpedient+"']/Nomdistricte \n" +
+                    "with '"+newnom+"'";
+            expr.executeCommand(replace_emp);
 
+            System.out.println("Registre modificat");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

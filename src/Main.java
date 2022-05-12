@@ -32,7 +32,7 @@ public class Main {
 
                 switch (opcion) {
                     case 1:
-                        System.out.println("\n*** Barris que tenen com a mínim un registre ***");
+                        System.out.println("\n*** Districtes que tenen com a mínim un registre ***");
                         gestorDB.getBarris();
                         break;
                     case 2:
@@ -61,6 +61,7 @@ public class Main {
                         deleteregistre();
                         break;
                     case 9:
+                        refactorregistre();
                         break;
                     case 10:
                         salir = true;
@@ -93,6 +94,18 @@ public class Main {
         System.out.print("Indica el número d'expedient del registre que vols esborrar: ");
         int num = scanner.nextInt();
         gestorDB.deleteRegistre(num);
+        gestorDB.tancarSessió();
+    }
+
+    public static void refactorregistre() throws XQException {
+        Scanner scanner = new Scanner(System.in);
+        GestorDB gestorDB = new GestorDB();
+        System.out.print("Indica el número d'expedient del registre que vols modificar: ");
+        int num = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Indica el nou nom de districte per a aquest registre: ");
+        String str = scanner.nextLine();
+        gestorDB.refactorRegistre(num,str);
         gestorDB.tancarSessió();
     }
 
