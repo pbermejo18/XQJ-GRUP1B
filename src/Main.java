@@ -14,7 +14,7 @@ public class Main {
             System.out.println();
             System.out.println("###################################################################");
             System.out.println("##                            MENÚ                               ##");
-            System.out.println("## 1. Barris que tenen com a mínim un registre                   ##");
+            System.out.println("## 1. Districtes que tenen com a mínim un registre               ##");
             System.out.println("## 2. Nombre d'accidents a un barri                              ##");
             System.out.println("## 3. Llista d'accidents a cada mes (de més accidents a menys)   ##");
             System.out.println("## 4. Accidents en horari nocturn (22h a 06h) durant tot l'any   ##");
